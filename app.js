@@ -4,9 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const session = require('express-session');
+
+const mongoose = require('mongoose')
+require('./components/users/model')
+require('./components/categories/model')
+require('./components/products/model')
+
 // route
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
+var apisRouter = require('./routes/api');
+var categoriesRouter = require('./routes/categories');
+var usersRouter = require('./routes/users');
+
 
 
 var app = express();
@@ -20,9 +31,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'iloveyou',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {secure: false}
+}))
+
+mongoose.connect('mongodb+srv://dangnghia:123@cluster0.kgoum.mongodb.net/Spring2022?retryWrites=true&w=majority', {  
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('>>>>>>>>>> DB Connected!!!!!!'))
+.catch(err => console.log('>>>>>>>>> DB Error: ', err));
 
 app.use('/', indexRouter);
 app.use('/san-pham', productsRouter);
+app.use('/api', apisRouter);
+app.use('/categories', categoriesRouter);
+app.use('/users', usersRouter);
 
 
 // catch 404 and forward to error handler
@@ -42,6 +69,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
 
 
 /**
