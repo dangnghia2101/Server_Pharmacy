@@ -512,10 +512,12 @@
             const res = await fetchAPI(url, option);
             if(res.status){
                 document.getElementById('buttonEdit').value = res.status
-                if(res.status == "ENABLE"){
-                    document.getElementById('buttonEdit').classList.add("btn btn-primary")
+                if(res.status == "ENABLED"){
+                    document.getElementById('buttonEdit').classList.remove("btn-warning");
+                    document.getElementById('buttonEdit').classList.add("btn-primary")
                 }else{
-                    document.getElementById('buttonEdit').classList.add("btn btn-warning")
+                     document.getElementById('buttonEdit').classList.remove("btn-primary");
+                    document.getElementById('buttonEdit').classList.add("btn-warning")
                 }
             } else {
                 alert('sai roi')

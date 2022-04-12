@@ -30,7 +30,7 @@ router.post('/', [upload.single('image')], async function(req, res, next) {
   let {body, file} = req;
   let image ='';
   if(file){
-    image = `http://10.82.187.190:3000/images/${file.filename}`;
+    image = `https://serverandroidnangcao.herokuapp.com/images/${file.filename}`;
   }
   body = {...body, image: image}
   await productController.insert(body);
