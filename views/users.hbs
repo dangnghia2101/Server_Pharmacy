@@ -406,9 +406,9 @@
                                             <td>{{this.password}}</td>
 
                                             <td>
-                                                <button id="buttonEdit" class="btn btn-link"
-                                                    onclick="edit('{{this._id}}')">Enable</button>
-              
+                                                <input type="button"  id="buttonEdit" class="statusButton('{{this._id}}', '{{this.status}}')"
+                                                    onclick="edit('{{this._id}}')" value="{{this.status}}">
+                                                
                                             </td>
 
                                         </tr>
@@ -495,35 +495,37 @@
 <!-- End Modals-->
 
 <script>
-    const edit = (id) => {
-        window.location.href = `categories/${id}/edit`
-    }
-
-    const detail = (id) => {
-        window.location.href = `categories/${id}/detail`
-    }
-
-
-    let deleted_id;
-
-    const goDelete = (id) => {
-        deleted_id = id;
-    }
-
     const fetchAPI = async (url, option) => {
         const res = await fetch(url, option);
         return res.json();
     }
 
-    const onDelete = async () => {
-        const url = `http://192.168.169.1:3000/categories/${deleted_id}/delete`;
+
+    const edit = async  (id, status) => {
+        const url = `users/${id}/changeStatus`;
         const option = {
-            method: 'delete',
-            headers: { 'Content-Type': 'application/json' }
+            method: 'post',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({})
         }
-        try {
-            await fetchAPI(url, option);
-            window.location.href = '/categories';
-        } catch (e) { console.log('Delete error: ', e) }
+        try{
+            const res = await fetchAPI(url, option);
+            if(res.status){
+                document.getElementById('buttonEdit').value = res.status
+                document.getElementById('buttonEdit').classList.add()
+
+            } else {
+                alert('sai roi')
+            }
+        }catch(e){}
     }
+
+    const statusButton = (id, status) => {
+        if(status == "ENABLE"){
+            return "btn btn-secondary"
+        }else{
+            return "btn btn-warning"
+        }
+    }
+
 </script>
