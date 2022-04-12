@@ -25,7 +25,7 @@ exports.register = async(email, password, confirm_password) => {
     if(user) return null;
 
     const hash = await brcryt.hash(password, await brcryt.genSalt(10))
-    user = await userService.register(email, hash, true)
+    user = await userService.register(email, hash, "ENABLE")
     return {_id: user._id}
 }
 
@@ -38,10 +38,15 @@ exports.getUsers = async () => {
             _id: item._id,
             email: item.email,
             password: item.password,
+            status: item.status,
             index: index + 1,
         }
         return item;
     })
     return users;
+}
+
+exports.changeStatus = async (id, user) => {
+   return await userService.changeStatus(id, user);
 }
 

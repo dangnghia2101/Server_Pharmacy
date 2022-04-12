@@ -406,7 +406,7 @@
                                             <td>{{this.password}}</td>
 
                                             <td>
-                                                <input type="button"  id="buttonEdit" class="statusButton('{{this._id}}', '{{this.status}}')"
+                                                <input type="button"  id="buttonEdit" class="btn btn-primary"
                                                     onclick="edit('{{this._id}}')" value="{{this.status}}">
                                                 
                                             </td>
@@ -512,8 +512,11 @@
             const res = await fetchAPI(url, option);
             if(res.status){
                 document.getElementById('buttonEdit').value = res.status
-                document.getElementById('buttonEdit').classList.add()
-
+                if(res.status == "ENABLE"){
+                    document.getElementById('buttonEdit').classList.add("btn btn-primary")
+                }else{
+                    document.getElementById('buttonEdit').classList.add("btn btn-warning")
+                }
             } else {
                 alert('sai roi')
             }

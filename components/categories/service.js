@@ -33,7 +33,6 @@ exports.delete = async (id) => {
  */
 
 exports.update = async (id, category) => {
-  console.log(">>>>>>>>>> "+ id + category.name + category.description)
   await categoryModel.findByIdAndUpdate(id, category);
 }
 

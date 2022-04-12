@@ -28,4 +28,10 @@ exports.getUsers = async () => {
     return uses;
 }
 
+exports.changeStatus = async (id) => {
+    const user = await userModel.findById(id);
+    let status = user.status == 'ENABLED' ? 'DISABLED' : 'ENABLED' ;
+    await userModel.findByIdAndUpdate(id, {status});
+    return status;
+}
 
