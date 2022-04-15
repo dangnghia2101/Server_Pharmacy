@@ -7,9 +7,9 @@ var logger = require('morgan');
 const session = require('express-session');
 
 const mongoose = require('mongoose')
-require('./components/users/model')
-require('./components/categories/model')
-require('./components/products/model')
+require('./components/models/UserModel')
+require('./components/models/CategoryModel')
+require('./components/models/ProductModel')
 
 // route
 var indexRouter = require('./routes/index');
