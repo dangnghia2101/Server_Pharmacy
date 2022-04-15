@@ -4,8 +4,8 @@ var router = express.Router();
 
 const jwt = require('jsonwebtoken')
 
-const userController = require('../components/controllers/UserController')
-const authentication = require('../middle/authertication')
+const userController = require('../controllers/UserController')
+const authentication = require('../../middle/authertication')
 
 /* GET home page. */
 router.get('/', [authentication.checkLogin], function(req, res, next) {

@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-const userController = require('../components/controllers/UserController')
-const productController = require('../components/controllers/ProductController')
+const userController = require('../controllers/UserController')
+const productController = require('../controllers/ProductController')
 
 const jwt = require('jsonwebtoken')
 
-const authentication = require('../middle/authertication')
+const authentication = require('../../middle/authertication')
 
 // http://localhost:3000/api/login
 // method: get

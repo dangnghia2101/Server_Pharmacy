@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const productController = require('../components/controllers/ProductController')
-const categoryController = require('../components/controllers/CategoryControler')
+const productController = require('../controllers/ProductController')
+const categoryController = require('../controllers/CategoryControler')
 
-const upload = require('../middle/upload')
-const authentication = require('../middle/authertication')
+const upload = require('../../middle/upload')
+const authentication = require('../../middle/authertication')
 // http://localhost:3000/san-pham
 // method: get
 // detail: lấy danh sách sản phẩm

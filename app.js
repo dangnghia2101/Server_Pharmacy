@@ -12,11 +12,11 @@ require('./components/models/CategoryModel')
 require('./components/models/ProductModel')
 
 // route
-var indexRouter = require('./routes/index');
-var productsRouter = require('./routes/products');
-var apisRouter = require('./routes/api');
-var categoriesRouter = require('./routes/categories');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./components/routes/index');
+var productsRouter = require('./components/routes/products');
+var apisRouter = require('./components/routes/api');
+var categoriesRouter = require('./components/routes/categories');
+var usersRouter = require('./components/routes/users');
 
 
 

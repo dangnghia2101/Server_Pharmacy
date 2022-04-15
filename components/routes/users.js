@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const userController = require('../components/controllers/UserController')
-const authentication = require('../middle/authertication')
+const userController = require('../controllers/UserController')
+const authentication = require('../../middle/authertication')
 
 
 router.get('/', async function (req, res, next) {
