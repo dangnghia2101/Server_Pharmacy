@@ -406,9 +406,13 @@
                                             <td>{{this.password}}</td>
 
                                             <td>
-                                                <input type="button"  id="buttonEdit" class="btn btn-primary"
-                                                    onclick="edit('{{this._id}}')" value="{{this.status}}">
-                                                
+                                                {{#if this.status}}
+                                                    <input type="button"  id="buttonEdit" class="btn btn-primary"
+                                                        onclick="edit('{{this._id}}')" value="{{this.valueStatus}}">
+                                                {{else}}
+                                                    <input type="button"  id="buttonEdit" class="btn btn-warning"
+                                                        onclick="edit('{{this._id}}')" value="{{this.valueStatus}}">
+                                                {{/if}}
                                             </td>
 
                                         </tr>
@@ -523,14 +527,6 @@
                 alert('sai roi')
             }
         }catch(e){}
-    }
-
-    const statusButton = (id, status) => {
-        if(status == "ENABLE"){
-            return "btn btn-secondary"
-        }else{
-            return "btn btn-warning"
-        }
     }
 
 </script>

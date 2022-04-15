@@ -38,7 +38,8 @@ exports.getUsers = async () => {
             _id: item._id,
             email: item.email,
             password: item.password,
-            status: item.status,
+            valueStatus: item.status,
+            status: item.status == "ENABLED" ? true:false,
             index: index + 1,
         }
         return item;

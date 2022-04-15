@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 exports.checkLogin = function (req, res, next) {
     const { session } = req;
     const url = req.originalUrl.toLowerCase();
-    console.log(session.token +" " + url)
+    console.log("======> token" , session ," " , url)
     if (!session) {
         if (url.includes('login')) {
             next();
@@ -44,8 +44,10 @@ exports.checkToken = function (request, response, next){
     let token = null;
     if(request.headers.authorization && 
         request.headers.authorization.split(' ')[0] == "Bearer")
-        token = request.headers.authorization.split(' ')[1];
-
+        {
+            token = request.headers.authorization.split(' ')[1];
+        }
+  
     if(token){
         jwt.verify(token, 'iloveyou', function (error, decoded) {
             if (error) {
